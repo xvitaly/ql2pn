@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding=utf-8
 
-import argparse
+import argparse, os, glob
 
 
 def mkparser():
@@ -11,9 +11,13 @@ def mkparser():
     return parser
 
 
+def getnumbers(logdir):
+    ff = os.listdir(logdir)
+    return ff
+
+
 def main():
     n = mkparser().parse_args()
-
 
 if __name__ == '__main__':
     main()
