@@ -16,6 +16,15 @@ def getnumbers(logdir):
     return ff
 
 
+def getlogfiles(logdir, ids):
+    result = []
+    for id in ids:
+        flog = os.path.join(logdir, id, 'History')
+        for xx in os.listdir(flog):
+            result.append(os.path.join(flog, xx))
+    return result
+
+
 def main():
     n = mkparser().parse_args()
 
