@@ -27,6 +27,8 @@ def getlogfiles(logdir, ids):
 
 def main():
     n = mkparser().parse_args()
+    dir = n.logdir
+    logs = getlogfiles(dir, getnumbers(dir))
 
 if __name__ == '__main__':
     main()
