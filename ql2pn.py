@@ -28,7 +28,7 @@ def getlogfiles(logdir, ids):
     return result
 
 
-def gmt2unix(gtime):
+def date2unix(gtime):
     do = datetime.strptime(gtime, '%H:%M:%S %d/%m/%Y')
     return int(mktime(do.timetuple()))
 
