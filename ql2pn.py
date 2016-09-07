@@ -19,12 +19,12 @@ def getnumbers(logdir):
     return ff
 
 
-def getlogfiles(logdir, ids):
+def getlogfiles(logdir, uids):
     result = []
-    for id in ids:
-        flog = os.path.join(logdir, id, 'History')
-        for xx in os.listdir(flog):
-            result.append(os.path.join(flog, xx))
+    for uid in uids:
+        flog = os.path.join(logdir, uid, 'History')
+        for f in os.listdir(flog):
+            result.append(os.path.join(flog, f))
     return result
 
 
