@@ -2,6 +2,8 @@
 # coding=utf-8
 
 import argparse, os, glob
+import datetime
+from time import mktime
 
 
 def mkparser():
@@ -25,10 +27,15 @@ def getlogfiles(logdir, ids):
     return result
 
 
+def gmt2unix(gtime):
+    do = datetime.strptime(gtime, '%Y-%m-%dT%H:%M:%SZ')
+    return int(mktime(do.timetuple()))
+
+
 def main():
     params = mkparser().parse_args()
-    dir = params.logdir
-    logs = getlogfiles(dir, getnumbers(dir))
+    logdir = params.logdir
+    logs = getlogfiles(logdir, getnumbers(logdir))
 
 if __name__ == '__main__':
     main()
