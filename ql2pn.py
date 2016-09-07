@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 # coding=utf-8
 
-import argparse, os, glob
-import datetime
+import argparse
+import os
+from datetime import datetime
 from time import mktime
 
 
