@@ -29,7 +29,7 @@ def getlogfiles(logdir, ids):
 
 
 def gmt2unix(gtime):
-    do = datetime.strptime(gtime, '%Y-%m-%dT%H:%M:%SZ')
+    do = datetime.strptime(gtime, '%H:%M:%S %d/%m/%Y')
     return int(mktime(do.timetuple()))
 
 
