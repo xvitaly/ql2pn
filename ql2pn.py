@@ -4,7 +4,7 @@
 import argparse
 import os
 from datetime import datetime
-from time import mktime
+from time import mktime, strftime
 
 
 def mkparser():
@@ -30,6 +30,11 @@ def getlogfiles(logdir, uids):
 
 def reslogpath(resdir, uid):
     return os.path.join(resdir, 'icq', uid)
+
+
+def frmtime(utime):
+    ptime = datetime.fromtimestamp(utime).strftime('%Y-%m-%d.%H%M%S')
+    return '%s%s.html' % (ptime, strftime('%z%Z'))
 
 
 def date2unix(gtime):
