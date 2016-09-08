@@ -28,6 +28,10 @@ def getlogfiles(logdir, uids):
     return result
 
 
+def reslogpath(resdir, uid):
+    return os.path.join(resdir, 'icq', uid)
+
+
 def date2unix(gtime):
     do = datetime.strptime(gtime, '%H:%M:%S %d/%m/%Y')
     return int(mktime(do.timetuple()))
