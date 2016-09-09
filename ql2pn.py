@@ -25,7 +25,7 @@ def getlogfiles(logdir, uids):
     for uid in uids:
         flog = os.path.join(logdir, uid, 'History')
         for f in os.listdir(flog):
-            result.append(os.path.join(flog, f))
+            result.append([os.path.join(flog, f), uid])
     return result
 
 
@@ -47,7 +47,7 @@ def readlog(lfile):
     return codecs.open(lfile, 'r', encoding='cp1251').readlines()
 
 
-def parselog(logdir, lfile):
+def parselog(lfile, resdir, uid):
     logfile = readlog(lfile)
 
 
@@ -55,7 +55,7 @@ def main():
     params = mkparser().parse_args()
     logdir = params.logdir
     for lfile in getlogfiles(logdir, getnumbers(logdir)):
-        parselog(logdir, lfile)
+        parselog(lfile[0], params.resdir, lfile[1])
 
 if __name__ == '__main__':
     main()
