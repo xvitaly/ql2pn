@@ -47,6 +47,10 @@ def readlog(lfile):
     return codecs.open(lfile, 'r', encoding='cp1251').readlines()
 
 
+def genlogname(resdir, uid, utime):
+    return os.path.join(reslogpath(resdir, uid), frmtime(utime))
+
+
 def parselog(lfile, resdir, uid):
     logfile = readlog(lfile)
 
@@ -56,6 +60,7 @@ def main():
     logdir = params.logdir
     for lfile in getlogfiles(logdir, getnumbers(logdir)):
         parselog(lfile[0], params.resdir, lfile[1])
+
 
 if __name__ == '__main__':
     main()
