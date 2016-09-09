@@ -47,16 +47,15 @@ def readlog(lfile):
     return codecs.open(lfile, 'r', encoding='cp1251').readlines()
 
 
-def parselog(lfile):
-    print (lfile)
-    readlog(lfile)
+def parselog(logdir, lfile):
+    logfile = readlog(lfile)
 
 
 def main():
     params = mkparser().parse_args()
     logdir = params.logdir
     for lfile in getlogfiles(logdir, getnumbers(logdir)):
-        parselog(lfile)
+        parselog(logdir, lfile)
 
 if __name__ == '__main__':
     main()
