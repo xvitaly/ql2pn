@@ -9,8 +9,8 @@ from time import mktime, strftime
 
 def mkparser():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--logdir', type=str, default='', help='Path to Q2005a log directory.', required=True)
-    parser.add_argument('--resdir', type=str, default='.', help='Path to output directory.', required=False)
+    parser.add_argument('--logdir', '-l', type=str, default='', help='Path to Q2005a log directory.', required=True)
+    parser.add_argument('--resdir', '-r', type=str, default='.', help='Path to output directory.', required=False)
     return parser
 
 
