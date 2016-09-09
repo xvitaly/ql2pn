@@ -1,8 +1,8 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # coding=utf-8
 
 import argparse
-import os
+import os, codecs
 from datetime import datetime
 from time import mktime, strftime
 
@@ -43,14 +43,19 @@ def date2unix(gtime):
 
 
 def readlog(lfile):
-    print lfile
+    return codecs.open(lfile, 'r', encoding='cp1251').readlines()
+
+
+def parselog(lfile):
+    print (lfile)
+    readlog(lfile)
 
 
 def main():
     params = mkparser().parse_args()
     logdir = params.logdir
     for lfile in getlogfiles(logdir, getnumbers(logdir)):
-        readlog(lfile)
+        parselog(lfile)
 
 if __name__ == '__main__':
     main()
