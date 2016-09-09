@@ -2,7 +2,8 @@
 # coding=utf-8
 
 import argparse
-import os, codecs
+import codecs
+import os
 from datetime import datetime
 from time import mktime, strftime
 
