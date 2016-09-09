@@ -42,10 +42,15 @@ def date2unix(gtime):
     return int(mktime(do.timetuple()))
 
 
+def readlog(lfile):
+    print lfile
+
+
 def main():
     params = mkparser().parse_args()
     logdir = params.logdir
-    logs = getlogfiles(logdir, getnumbers(logdir))
+    for lfile in getlogfiles(logdir, getnumbers(logdir)):
+        readlog(lfile)
 
 if __name__ == '__main__':
     main()
