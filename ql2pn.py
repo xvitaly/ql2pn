@@ -44,7 +44,7 @@ def date2unix(gtime):
 
 
 def readlog(lfile):
-    return codecs.open(lfile, 'r', encoding='cp1251').readlines()
+    return codecs.open(lfile, 'r', encoding='cp1251', errors='ignore').readlines()
 
 
 def genlogname(resdir, uid, utime):
