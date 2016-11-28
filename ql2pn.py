@@ -61,7 +61,17 @@ def createhtml(resfile, recid, recdate, uid, contents):
 
 
 def parselog(lfile, resdir, uid):
+    # Reading log file...
     logfile = readlog(lfile)
+
+    # Parsing contents of log file...
+    for lln in logfile.split('--------------------------------------'):
+        # Parsing sent or received message...
+        ln = lln.splitlines()
+
+        # Checking for message in parsed list...
+        if len(ln) >= 3:
+            print(ln[1])
 
 
 def main():
