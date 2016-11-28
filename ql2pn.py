@@ -73,6 +73,9 @@ def parselog(lfile, resdir, uid):
         if len(ln) >= 3:
             print(ln[1])
 
+    # For debug purposes exit after first file parsed...
+    exit()
+
 
 def main():
     params = mkparser().parse_args()
