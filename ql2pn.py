@@ -68,6 +68,11 @@ def parserow(row):
     return [row[:ri-1], date2unix(row[ri+1:-1])]
 
 
+def formatline(utype, udate, uname, umsg):
+    hcolor = '#16569E' if utype == '>-' else '#A82F2F'
+    return '<font color="%s"><font size="2">%s</font> <b>%s:</b></font> %s<br/>' % (hcolor, udate, uname, umsg)
+
+
 def parselog(lfile, resdir, uid):
     # Reading log file...
     logfile = readlog(lfile)
