@@ -65,7 +65,7 @@ def parserow(row):
     ri = row.index('(')
 
     # Return result...
-    return [row[:ri-1], row[ri+1:-1]]
+    return [row[:ri-1], date2unix(row[ri+1:-1])]
 
 
 def parselog(lfile, resdir, uid):
@@ -79,7 +79,9 @@ def parselog(lfile, resdir, uid):
 
         # Checking for message in parsed list...
         if len(ln) >= 3:
-            print(ln[1])
+            # Parsing first row with nickname and date...
+            fr = parserow(ln[1])
+            print(fr[0], fr[1])
 
     # For debug purposes exit after first file parsed...
     exit()
