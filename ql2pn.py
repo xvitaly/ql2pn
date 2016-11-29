@@ -60,6 +60,14 @@ def createhtml(resfile, recid, recdate, uid, contents):
         tfile.write(html)
 
 
+def parserow(row):
+    # Find index of date in row...
+    ri = row.index('(')
+
+    # Return result...
+    return [row[:ri-1], row[ri+1:-1]]
+
+
 def parselog(lfile, resdir, uid):
     # Reading log file...
     logfile = readlog(lfile)
