@@ -77,6 +77,10 @@ def parselog(lfile, resdir, uid):
     # Reading log file...
     logfile = readlog(lfile)
 
+    # Setting variables...
+    resmsg = ''
+    lastdate = ''
+
     # Parsing contents of log file...
     for lln in logfile.split('--------------------------------------'):
         # Parsing sent or received message...
@@ -86,7 +90,8 @@ def parselog(lfile, resdir, uid):
         if len(ln) >= 3:
             # Parsing first row with nickname and date...
             fr = parserow(ln[1])
-            print(fr[0], fr[1])
+            lastdate = fr[1]
+            resmsg += formatline(ln[0], fr[1], fr[0], ln[2])
 
     # For debug purposes exit after first file parsed...
     exit()
