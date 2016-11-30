@@ -78,6 +78,7 @@ def parselog(lfile, resdir, uid):
     logfile = readlog(lfile)
 
     # Setting variables...
+    recid = os.path.splitext(os.path.basename(lfile))[0]
     resmsg = ''
     lastdate = ''
 
@@ -92,6 +93,9 @@ def parselog(lfile, resdir, uid):
             fr = parserow(ln[1])
             lastdate = fr[1]
             resmsg += formatline(ln[0], fr[1], fr[0], ln[2])
+
+    # Writing generated HTML to file...
+    createhtml(os.path.join(resdir, 'icq', uid, recid, frmtime(lastdate)), recid, lastdate, uid, resmsg)
 
     # For debug purposes exit after first file parsed...
     exit()
