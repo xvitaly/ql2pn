@@ -38,6 +38,10 @@ def frmtime(utime):
     return '%s%s.html' % (ptime, strftime('%z%Z'))
 
 
+def msgtime(utime):
+    return datetime.fromtimestamp(utime).strftime('(%H:%M:%S)')
+
+
 def date2unix(gtime):
     do = datetime.strptime(gtime, '%H:%M:%S %d/%m/%Y')
     return int(mktime(do.timetuple()))
