@@ -54,7 +54,7 @@ def genlogname(resdir, uid, utime):
 def createhtml(resfile, recid, recdate, uid, contents):
     row = 'Conversation with %s at %s on %s (icq)' % (recid, recdate, uid)
     html = '<html><head><meta http-equiv="content-type" content="text/html; ' \
-           'charset=UTF-8"><title>%s</title></head><body><h3>%s</h3>%s</body></html>' % (row, row, contents)
+           'charset=UTF-8"><title>%s</title></head><body><h3>%s</h3>%s\n</body></html>' % (row, row, contents)
 
     with open(resfile, 'w') as tfile:
         tfile.write(html)
