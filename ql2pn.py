@@ -52,10 +52,17 @@ def genlogname(resdir, uid, utime):
 
 
 def createhtml(resfile, recid, recdate, uid, contents):
+    # Checking directory exists...
+    resdir = os.path.dirname(resfile)
+    if not os.path.exists(resdir):
+        os.makedirs(resdir)
+
+    # Generating HTML file...
     row = 'Conversation with %s at %s on %s (icq)' % (recid, recdate, uid)
     html = '<html><head><meta http-equiv="content-type" content="text/html; ' \
            'charset=UTF-8"><title>%s</title></head><body><h3>%s</h3>%s\n</body></html>' % (row, row, contents)
 
+    # Writing result to text file...
     with open(resfile, 'w') as tfile:
         tfile.write(html)
 
