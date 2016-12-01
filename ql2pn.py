@@ -38,6 +38,10 @@ def frmtime(utime):
     return '%s%s.html' % (ptime, strftime('%z%Z'))
 
 
+def convtime(utime):
+    return datetime.fromtimestamp(utime).strftime('%d-%m-%Y.%H:%M:%S')
+
+
 def msgtime(utime):
     return datetime.fromtimestamp(utime).strftime('(%H:%M:%S)')
 
