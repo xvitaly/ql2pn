@@ -134,9 +134,6 @@ def parselog(lfile, resdir, uid):
                 ipx = 0
                 resmsg = formatline(ln[0], fr[1], fr[0], ln[2])
 
-    # For debug purposes exit after first file parsed...
-    exit()
-
 
 def main():
     params = mkparser().parse_args()
