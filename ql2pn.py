@@ -97,6 +97,7 @@ def parselog(lfile, resdir, uid):
     recid = os.path.splitext(os.path.basename(lfile))[0]
     resmsg = ''
     ipx = 0
+    wrx = 1
     firstdate = 0
     lastdate = 0
 
@@ -124,6 +125,7 @@ def parselog(lfile, resdir, uid):
 
                 # Increment counters...
                 ipx += 1
+                wrx = 1
 
                 # Writing conversation to special variable...
                 resmsg += formatline(ln[0], fr[1], fr[0], ln[2])
@@ -133,7 +135,14 @@ def parselog(lfile, resdir, uid):
 
                 # Nulling variables...
                 ipx = 0
+                wrx = 0
+
+                # Saving row to a new conversation...
                 resmsg = formatline(ln[0], fr[1], fr[0], ln[2])
+
+    # Writing last conversation to file too...
+    if wrx != 0:
+        createhtml(os.path.join(resdir, 'icq', uid, recid, frmtime(firstdate)), recid, firstdate, uid, resmsg)
 
 def main():
     params = mkparser().parse_args()
