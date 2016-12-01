@@ -91,7 +91,9 @@ def parselog(lfile, resdir, uid):
     # Setting variables...
     recid = os.path.splitext(os.path.basename(lfile))[0]
     resmsg = ''
-    lastdate = ''
+    ipx = 0
+    firstdate = 0
+    lastdate = 0
 
     # Parsing contents of log file...
     for lln in logfile.split('--------------------------------------'):
@@ -102,11 +104,19 @@ def parselog(lfile, resdir, uid):
         if len(ln) >= 3:
             # Parsing first row with nickname and date...
             fr = parserow(ln[1])
+            ax = fr[1] - lastdate
             lastdate = fr[1]
-            resmsg += formatline(ln[0], fr[1], fr[0], ln[2])
+            if (ax < 43200) or (ipx == 0):
+                ipx += 1
+                firstdate = fr[1]
+                resmsg += formatline(ln[0], fr[1], fr[0], ln[2])
+            else:
+                ipx = 0
+                createhtml(os.path.join(resdir, 'icq', uid, recid, frmtime(firstdate)), recid, firstdate, uid, resmsg)
+                resmsg = ''
 
     # Writing generated HTML to file...
-    createhtml(os.path.join(resdir, 'icq', uid, recid, frmtime(lastdate)), recid, lastdate, uid, resmsg)
+
 
     # For debug purposes exit after first file parsed...
     exit()
