@@ -39,7 +39,7 @@ def frmtime(utime):
 
 
 def convtime(utime):
-    return datetime.fromtimestamp(utime).strftime('%d-%m-%Y.%H:%M:%S')
+    return datetime.fromtimestamp(utime).strftime('%d.%m.%Y %H:%M:%S')
 
 
 def msgtime(utime):
@@ -66,7 +66,7 @@ def createhtml(resfile, recid, recdate, uid, contents):
         os.makedirs(resdir)
 
     # Generating HTML file...
-    row = 'Conversation with %s at %s on %s (icq)' % (recid, recdate, uid)
+    row = 'Conversation with %s at %s on %s (icq)' % (recid, convtime(recdate), uid)
     html = '<html><head><meta http-equiv="content-type" content="text/html; ' \
            'charset=UTF-8"><title>%s</title></head><body><h3>%s</h3>%s\n</body></html>' % (row, row, contents)
 
