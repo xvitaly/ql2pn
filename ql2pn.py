@@ -104,8 +104,14 @@ def parselog(lfile, resdir, uid):
         if len(ln) >= 3:
             # Parsing first row with nickname and date...
             fr = parserow(ln[1])
+
+            # Checking if message belongs to current conversation or not...
             ax = fr[1] - lastdate
+
+            # Saving last message's time...
             lastdate = fr[1]
+
+            # Extraction whole conversation (for 12 hours)...
             if (ax < 43200) or (ipx == 0):
                 ipx += 1
                 firstdate = fr[1]
