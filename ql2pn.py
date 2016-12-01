@@ -77,7 +77,7 @@ def createhtml(resfile, recid, recdate, uid, contents):
 
 def parserow(row):
     # Find index of date in row...
-    ri = row.index('(')
+    ri = row.rindex('(')
 
     # Return result...
     return [row[:ri-1], date2unix(row[ri+1:-1])]
@@ -91,6 +91,7 @@ def formatline(utype, udate, uname, umsg):
 def parselog(lfile, resdir, uid):
     # Reading log file...
     logfile = readlog(lfile)
+    print('Parsing: %s...' % lfile)
 
     # Setting variables...
     recid = os.path.splitext(os.path.basename(lfile))[0]
@@ -133,7 +134,6 @@ def parselog(lfile, resdir, uid):
                 # Nulling variables...
                 ipx = 0
                 resmsg = formatline(ln[0], fr[1], fr[0], ln[2])
-
 
 def main():
     params = mkparser().parse_args()
