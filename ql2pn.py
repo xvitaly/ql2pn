@@ -99,7 +99,6 @@ def formatline(utype, udate, uname, umsg):
 def parselog(lfile, resdir, uid):
     # Reading log file...
     logfile = readlog(lfile)
-    print('Parsing: %s...' % lfile)
 
     # Setting variables...
     recid = os.path.splitext(os.path.basename(lfile))[0]
@@ -158,7 +157,15 @@ def main():
 
     # Generating list of files and starting parsing them...
     for lfile in getlogfiles(params.logdir, getnumbers(params.logdir)):
-        parselog(lfile[0], params.resdir, lfile[1])
+        try:
+            # Print message with current filename to console...
+            print('Parsing file "%s"...' % lfile[0])
+
+            # Starting parser...
+            parselog(lfile[0], params.resdir, lfile[1])
+        except Exception as ex:
+            # Show error message on exception...
+            print('An error occurred "%s" while parsing "%s" file.' % (ex.message, lfile[0]))
 
 
 if __name__ == '__main__':
