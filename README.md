@@ -2,7 +2,9 @@
 Converts plain text log files from Q2005a to Pidgin standard HTML format.
 
 # Usage
+```
 ./ql2pn.py [-h] --logdir LOGDIR [--resdir RESDIR]
+```
 
 Parameters:
  * **--logdir** or **-l** - path to Q2005a user directory;
