@@ -153,9 +153,11 @@ def parselog(lfile, resdir, uid):
         createhtml(os.path.join(resdir, 'icq', uid, recid, frmtime(firstdate)), recid, firstdate, uid, resmsg)
 
 def main():
+    # Receiving parameters...
     params = mkparser().parse_args()
-    logdir = params.logdir
-    for lfile in getlogfiles(logdir, getnumbers(logdir)):
+
+    # Generating list of files and starting parsing them...
+    for lfile in getlogfiles(params.logdir, getnumbers(params.logdir)):
         parselog(lfile[0], params.resdir, lfile[1])
 
 
