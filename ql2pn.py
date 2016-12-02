@@ -3,9 +3,9 @@
 
 import argparse
 import codecs
+import html
 import os
 import re
-import html
 from datetime import datetime
 from time import mktime, strftime
 
