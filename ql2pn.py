@@ -86,7 +86,7 @@ def parserow(row):
 
 
 def formatmsg(msg):
-    urlfn = re.compile('^(http:\/\/\S+)')
+    urlfn = re.compile('(https?:\/\/\S+)')
     return urlfn.sub(r'<a href="\1">\1</a>', html.escape(msg))
 
 
