@@ -5,6 +5,7 @@ import argparse
 import codecs
 import os
 import re
+import html
 from datetime import datetime
 from time import mktime, strftime
 
@@ -86,7 +87,7 @@ def parserow(row):
 
 def formatmsg(msg):
     urlfn = re.compile('^(http:\/\/\S+)')
-    return urlfn.sub(r'<a href="\1">\1</a>', msg)
+    return urlfn.sub(r'<a href="\1">\1</a>', html.escape(msg))
 
 
 def formatline(utype, udate, uname, umsg):
