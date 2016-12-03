@@ -132,7 +132,7 @@ def parselog(lfile, resdir, uid):
         ln = lln.splitlines(keepends=False)
 
         # Checking for message in parsed list...
-        if len(ln) >= 3:
+        if len(ln) > 3:
             # Parsing first row with nickname and date...
             fr = parserow(ln[1])
 
