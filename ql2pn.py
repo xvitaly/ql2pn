@@ -142,6 +142,13 @@ def parselog(lfile, resdir, uid):
             # Saving last message's time...
             lastdate = fr[1]
 
+            # Generating full message contents...
+            i = 2
+            convmsg = ''
+            while i < len(ln)-1:
+                convmsg += ln[i]
+                i += 1
+
             # Extracting whole conversation (for 12 hours)...
             if (ax < 43200) or (ipx == 0):
                 # Extracting date of conversation start...
@@ -153,7 +160,7 @@ def parselog(lfile, resdir, uid):
                 wrx = 1
 
                 # Writing conversation to special variable...
-                resmsg += formatline(ln[0], fr[1], fr[0], ln[2])
+                resmsg += formatline(ln[0], fr[1], fr[0], convmsg)
             else:
                 # Conversation extracted. Writing to file...
                 createhtml(os.path.join(resdir, 'icq', uid, recid, frmtime(firstdate)), recid, firstdate, uid, resmsg)
@@ -163,7 +170,7 @@ def parselog(lfile, resdir, uid):
                 wrx = 0
 
                 # Saving row to a new conversation...
-                resmsg = formatline(ln[0], fr[1], fr[0], ln[2])
+                resmsg = formatline(ln[0], fr[1], fr[0], convmsg)
 
     # Writing last conversation to file too...
     if wrx != 0:
