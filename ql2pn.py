@@ -146,7 +146,8 @@ def parselog(lfile, resdir, uid):
             i = 2
             convmsg = ''
             while i < len(ln)-1:
-                convmsg += ln[i]
+                if ln[i]:
+                    convmsg += '%s ' % ln[i]
                 i += 1
 
             # Extracting whole conversation (for 12 hours)...
@@ -175,6 +176,7 @@ def parselog(lfile, resdir, uid):
     # Writing last conversation to file too...
     if wrx != 0:
         createhtml(os.path.join(resdir, 'icq', uid, recid, frmtime(firstdate)), recid, firstdate, uid, resmsg)
+
 
 def main():
     # Receiving parameters...
